@@ -1,0 +1,47 @@
+.app-sidebar ul .selected p {
+  
+    color: #222392 ;
+    transition: all 0.3s ease;
+  }
+  .app-sidebar.showed ul  .selected button::before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    border-radius: var(--animation-time);
+  
+    background-color: #ed7966;
+    transform: scale(1.1) skewX(45deg);
+    z-index: -1;
+    transition: width 0.6s ease;
+    border: none;
+  }
+  
+  .app-sidebar ul  .selected button::before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ed7966;
+    transform: scale(54) skewX(89deg);
+    z-index: -1;
+    transition: width 0.4s ease-in-out;
+  }
+  
+    .app-sidebar ul  .selected button:hover::before {
+        width: 100%;
+        color: #ed7966;
+    }
+
+
+
+
+
+
+
+
+    

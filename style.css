@@ -1,0 +1,625 @@
+@import url("https://fonts.googleapis.com/css2?family=Domine&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Domine", serif;
+  list-style-type: none;
+}
+/* used resources from uiverse.io*/
+/* some of the css is still work in progress like the responsive sidebar i dont have it fully responsive with different width and height
+and how it behaves with the main content*/
+header {
+  background-color: #fbf7f6;
+  padding: 0px 15px;
+  padding-top: 8px;
+  border-top: 30px solid #ed7966;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  width: 100%;
+}
+.date_time {
+  position: absolute;
+  right: 30px;
+  top: -4px;
+  padding: 10px;
+  color: #303179;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+body {
+  background-color: #fbf7f6;
+  height: 100vh !important;
+  width: 100vw !important;
+}
+:root {
+  --animation-time: 0.7rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  margin: 40px 20px 50px 20px;
+}
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+
+  gap: 4rem;
+}
+.main-container {
+  position: fixed;
+  width: calc(100% - 300px); /* adjust the 250px to match your sidebar width */
+  overflow-y: scroll;
+  height: 100vh;
+  width: 80vw;
+  right: -40px;
+  top: 150px;
+  padding: 60px;
+  transition: all 0.4s ease;
+  text-align: justify;
+}
+.main-container h1 {
+  position: relative;
+  left: 600px;
+  font-size: 40px;
+  font-weight: 700;
+  color: #303179;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+/* browse pets page only*/
+.main-container .browse {
+  position: relative;
+  left: 300px;
+  top: -10px;
+  font-size: 40px;
+  font-weight: 700;
+  color: #303179;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+/*find a pet page only*/
+.main-container .choose {
+  position: relative;
+  left: 165px;
+  top: -10px;
+  font-size: 2.5vw;
+  font-weight: 700;
+  color: #303179;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.main-container .choose-pet {
+  background-color: #facac2;
+  border: 4px solid #303179;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  width: 45vw;
+  position: relative;
+  left: 15vh;
+  top: 0;
+  font-size: 2.2vw;
+  font-weight: 700;
+  color: #19191d;
+}
+.main-container .choose-pet select {
+  background-color: #f6b4a9;
+  border-radius: 10px;
+  position: relative;
+  padding: 2px;
+  font-size: 1.6vw;
+  font-weight: 700;
+  color: #303179;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.main-container .choose-pet input {
+  cursor: pointer;
+}
+
+/* end of find a pet page only*/
+
+/* care page only*/
+.main-container .care {
+  position: relative;
+  font-size: 1.35vw;
+  height: 125vh;
+  width: 90%;
+  left: 40px;
+  overflow-y: auto;
+  top: -4vh;
+  padding: 10px;
+  font-weight: 400;
+  color: #19191d;
+  text-align: inherit;
+}
+
+.main-container .care h1 {
+  font-weight: 400;
+  width: 100vw;
+  height: 2vh;
+  top: -5px;
+  left: 10vw;
+  color: #19191d;
+  align-items: center;
+  text-transform: none;
+}
+/* end of care page only*/
+/* start of giveaway page only*/
+
+.main-container .donate-form {
+  background-color: #facac2;
+  border: 4px solid #303179;
+  border-radius: 10px;
+  width: 38vw;
+  height: 75%;
+  padding: 20px;
+  position: relative;
+  left: 14vw;
+  top: -8vh;  
+  font-size: 1.2vw;
+  font-weight: 700;
+  color: #19191d;
+}
+
+.main-container .donates {
+  background-color: #facac2;
+  border: 4px solid #303179;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  width: 38vw;
+  position: relative;
+  left: 14vw;
+  top: -6vh;
+  z-index: 999;
+  box-shadow:  9px 15px 10px 3px rgba(0, 0, 0, 0.2);
+  font-size: 1.5vw;
+  font-weight: 700;
+  color: #19191d;
+}
+
+/* end of giveaway page only*/
+/* start of contact page only*/
+.main-container .contact-us {
+  border: 4px solid #ed7966;
+  padding: 1vh;
+  background-color: #facac2;
+  border-radius: 10px;
+  position: relative;
+  height: 65vh;
+  width: 79%;
+  box-shadow: 9px 15px 10px 3px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  left: 10vw;
+  top: -1vh;
+  font-size: 2.6vw;
+  font-weight: 700;
+  color: #19191d;
+  list-style-type: none;
+  margin-bottom: 1vh;
+}
+.main-container .contact-us h1 {
+  left: 2vw;
+}
+.main-container .contact-us li {
+  border: 4px solid #ed7966;
+  padding: 30px;
+  position: relative;
+
+  box-shadow: 9px 15px 10px 3px rgba(0, 0, 0, 0.2);
+  background-color: #facac2;
+  border-radius: 10px;
+  justify-content: center;
+  width: 105%;
+  align-items: center;
+  color: #19191d;
+  list-style-type: none;
+  margin: 30px;
+}
+/*end of contact page only*/
+
+.main-container .home {
+  position: relative;
+  font-size: 1.4vw;
+  font-weight: 400;
+  width: 100%;
+  height: 60vh;
+  overflow: auto;
+  color: #19191d;
+  margin-bottom: 20px;
+  align-items: center;
+  text-transform: none;
+}
+
+footer p {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  color: #ed7966;
+  width: 100%;
+  height: 50px;
+  background: #303179;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+}
+.homes .app-sidebar {
+  align-self: flex-start;
+  position: sticky;
+  background-color: #facac2;
+  scroll-snap-stop: always;
+  border-radius: 0.8rem;
+  padding: 6vh 2rem 13vh;
+  top: 4vh;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.35s ease;
+  width: 37%;
+  height: 91%;
+  margin: 1vw 1vw;
+  z-index: 999;
+  max-width: 40%;
+  max-height: fit-content;
+}
+.app-sidebar {
+  align-self: flex-start;
+  position: sticky;
+  background-color: #facac2;
+  scroll-snap-stop: always;
+  border-radius: 0.8rem;
+  padding: 6vh 2rem 13vh;
+  top: 4vh;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.35s ease;
+  width: 32%;
+  height: 91%;
+  margin: 1vw 1vw;
+  z-index: 999;
+  max-width: 33.5%;
+  max-height: fit-content;
+}
+.app-sidebar.showed {
+  max-width: 92%;
+
+  max-height: 100%;
+  width: 90%;
+  height: 91%;
+}
+.app-sidebar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  list-style: none;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.app-sidebar ul button {
+  padding: 1vw;
+  background-color: transparent;
+  width: 105%;
+  border-collapse: collapse;
+  gap: 1vw;
+  color: #1e1e1f;
+  cursor: pointer;
+  border-radius: 0.6rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+.app-sidebar.showed ul button::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  border-radius: var(--animation-time);
+  background-color: #303179;
+  transform: scale(1.1) skewX(45deg);
+  z-index: -1;
+  transition: width 0.6s ease;
+  border: none;
+}
+
+.app-sidebar ul button::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #303179;
+  transform: scale(54) skewX(89deg);
+  z-index: -1;
+  transition: width 0.4s ease-in-out;
+}
+
+.app-sidebar ul button:hover::before {
+  width: 100%;
+}
+
+.app-sidebar ul button p {
+  font-size: 1.45vw;
+  font-weight: 600;
+  line-height: 1.5vw;
+  overflow: hidden;
+  white-space: nowrap;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.app-sidebar.showed ul button p {
+  visibility: visible;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+.app-sidebar ul button .icon {
+  visibility: visible;
+  transition: all 0.3s ease;
+  margin: 0px 5px;
+  font-size: 1.3vw;
+}
+
+.app-sidebar.showed ul button:hover {
+  color: #fbe9e9;
+  transform: scale(1.1);
+  border: none;
+  box-shadow: 4px 5px 17px 0px #424373;
+  transition: all 0.3s ease;
+}
+.app-sidebar ul button:hover {
+  color: #fbe9e9;
+  transform: scale(1.25);
+  box-shadow: 4px 5px 17px 0px #424373;
+  transition: all 0.3s ease;
+}
+
+#toggle-sidebar {
+  display: flex;
+  background-color: #ed7966;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  border: 0;
+  border-radius: 1rem;
+  width: 60px;
+  height: 60px;
+  bottom: 50px;
+  right: -25px;
+  box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.2);
+  color: #1e1e1f;
+
+  cursor: pointer;
+  transition: all 0.4s ease;
+  transform: rotate(180deg);
+}
+
+.app-sidebar.showed #toggle-sidebar {
+  transform: rotate(0deg);
+  transition: all 0.4s ease;
+}
+
+/*
+ <button class="btn">
+            <span class="icon">
+              <svg viewBox="0 0 175 80" width="40" height="40">
+                <rect width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                <rect y="30" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                <rect y="60" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+              </svg>
+            </span>
+            <span class="text">MENU</span>
+          </button>
+*/
+.browse_pets h1 {
+  position: relative;
+  left: 30vw;
+  top: -4vh;
+  font-size: 2.5vw;
+  font-weight: 700;
+  color: #303179;
+  margin-bottom: 5vh;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.browse_pets {
+  gap: 1vw;
+  background-color: #f0f0f0;
+  border-radius: 1rem;
+  padding-right: 100px;
+  margin-left: 200px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.35s ease;
+}
+
+.pet-list img {
+  width: 20%;
+  object-fit: cover;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.35s ease;
+}
+.pet-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 5vw;
+
+  margin-top: 100px;
+  margin-bottom: 30px;
+  padding-bottom: 170px;
+  list-style: none;
+  overflow-y:   ;
+
+
+}
+
+.pet-list img:hover {
+  width: 25%;
+  transition: all 0.35s ease;
+}
+
+.pet-list .pet {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  list-style: none;
+  padding: 0;
+  transition: all 0.3s ease;
+
+}
+
+.pet-list li .desc{
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  height: auto;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  transition: all 0.3s ease;
+  margin: 0;
+}
+.pet-list button {
+  align-items: center;
+  appearance: none;
+  background-color: #303179;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.2) 0 2px 4px,rgba(45, 35, 66, 0.15) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fefefe;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  width: 55%;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  font-size: 18px;
+ }
+ 
+ .pet-list button:focus {
+  box-shadow: #da6553 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #ed7966 0 -3px 0 inset;
+  
+ }
+ 
+ .pet-list button:hover {
+  box-shadow: rgba(45, 35, 66, 0.3) 0 4px 8px, rgba(45, 35, 66, 0.2) 0 7px 13px -3px, #ed7966 0 -3px 0 inset;
+  transform: translateY(-2px);
+ }
+ 
+ .pet-list button:active {
+  box-shadow: #ed7966 0 3px 7px inset;
+  transform: translateY(2px);
+  color: #ed7966;
+ }
+/* pop up error css */
+
+
+#email-error{
+  position: absolute;
+  top: 0%;
+  left: 100%;
+  color: #ff0000 ;
+  z-index: 10;
+  width: 12vw;
+  height: auto;
+  padding: 10px;
+  background-color: #ffcccc;
+  border: 2px solid #ff0000;
+  border-radius: 4px;
+  font-size: 0.8vw;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  display: none;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.find-pup #gender-error{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: #ff0000 ;
+  z-index: 10;
+  width: 20vw;
+  padding: 10px;
+  background-color: #ffcccc;
+  border: 2px solid #ff0000;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  display: none;
+}
+
+.find-pup #gender-error::before{
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  border-top: 10px solid #ffcccc;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+.find-pup #end-message {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: #1a8415 ;
+  z-index: 10;
+  width: 300px;
+  padding: 10px;
+  background-color: #ed7966;
+  border: 2px solid #1a8415;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  display: none;
+}
+
+.find-pup #end-message::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  border-top: 10px solid #ffcccc;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
