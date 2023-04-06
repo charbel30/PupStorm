@@ -26,9 +26,9 @@ const emailError = document.getElementById('email-error');
 const emailregex = (/^[^\s@]+@[^\s@]+\.[^\s@]+$/) ;
 
 
+
   //  display the date and time in the HTML page and update it every second 
   function clockTick() {
-  
       const currentTime = new Date();
       let options = {
         weekday: "long",
@@ -111,6 +111,7 @@ const emailregex = (/^[^\s@]+@[^\s@]+\.[^\s@]+$/) ;
 
 
 if(document.querySelector(".find-pup")){
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = new FormData(form);
@@ -133,11 +134,13 @@ form.addEventListener("submit", (e) => {
     } 
     else{
         genderError.style.display = 'none';
+        document.querySelector(".main-container .find-pup").style.display = 'none';
+
+        document.querySelector(".main-container .available-pets").style.display  = 'block';
      document.querySelector("#end-message").style.display = 'block';
      
     }
- 
- 
+  
     const pet = {
       type,
       breed,

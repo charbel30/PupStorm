@@ -1,0 +1,42 @@
+[
+    {
+        "pet": "dog",
+        "breed": "Labrador",
+        "age": "3",
+        "gender": "female ",
+        "Suitable for small children": "yes",
+        "Can go along with other cats and dogs": "yes"
+    },
+    {
+        "pet": "dog",
+        "breed": "Poodle",
+        "age": "2",
+        "gender": "male",
+        "Suitable for small children": "yes",
+        "Can go along with other cats and dogs": "yes"
+    },
+    {
+        "pet": "dog",
+        "breed": "Bulldog",
+        "age": "5",
+        "gender": "male",
+        "Suitable for small children": "no",
+        "Can go along with other cats and dogs": "no"
+    },
+    {
+        "pet": "dog",
+        "breed": "Golden Retriever",
+        "age": "4",
+        "gender": "female",
+        "Suitable for small children": "yes",
+        "Can go along with other cats and dogs": "yes"
+    },
+    {
+        "pet": "dog",
+        "breed": "Pug",
+        "age": "2",
+        "gender": "male",
+        "Suitable for small children": "no",
+        "Can go along with other cats and dogs": "no"
+    }
+]

@@ -1,7 +1,9 @@
+
+<?php include("database.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +16,7 @@
 
 
 <body>
+
     <header>
         <logo>
 
@@ -27,7 +30,7 @@
             <div id="app-sidebar" class="app-sidebar showed">
                 <ul>
 
-                    <a href="browse_pets.html" class="selected">
+                    <a href="browse_pets.php" class="selected">
                         <button class="sidebut">
                             <li>
 
@@ -108,9 +111,91 @@
             </div>
         </div>
         <div class="main-container browse_pets">
+            
+        <div class="find-pup">
+                <h1 class="browse choose">choose the pet you want</h1>
+
+                <p>
+                <form action="database.php" method="post" class="choose-pet choose-form">
+                    <label for="pet">Choose a pet:</label>
+                    <select name="pet" id="pet">
+                        <option value="dog">Dog</option>
+                        <option value="cat">Cat</option>
+                    </select>
+                    <div>
+                        <label for="breed">Choose a breed:</label>
+                        <select name="breed" id="breed">
+                            <option value="labrador">Labrador</option>
+                            <option value="poodle">Poodle</option>
+                            <option value="bulldog">Bulldog</option>
+                            <option value="beagle">Beagle</option>
+                            <option value="german-shepherd">German Shepherd</option>
+                            <option value="golden-retriever">Golden Retriever</option>
+                            <option value="french-bulldog">French Bulldog</option>
+                            <option value="husky">Husky</option>
+                            <option value="boxer">Boxer</option>
+                            <option value="pug">Pug</option>
+                            <option value="rottweiler">Rottweiler</option>
+                            <option value="chihuahua">Chihuahua</option>
+                            <option value="doberman">Doberman</option>
+                            <option value="cat">any cat</option>
+    
+    
+    
+                            <option value="doesn't matter">doesn't matter</option>
+                        </select>
+                    </div>
+                    <label for="age">Choose an age:</label>
+                    <select name="age" id="age">
+                        <option value="puppy">Puppy</option>
+                        <option value="young">Young</option>
+                        <option value="adult">Adult</option>
+                        <option value="senior">Senior</option>
+                        <option value="doesn't matter">doesn't matter</option>
+                    </select>
+                    <br>
+                    <label for="gender">prefered gender:</label>
+                    <br>
+                    <label for="inputs" class="rad-label"> <input class="radio" type="radio" value="female" name="gender" >
+                        <span class="text">female</span>
+                    </label>
+    
+                    <label for="inputs" class="rad-label"> <input type="radio" value="male" name="gender"  >
+                        <span class="text">male</span>
+                        <label for="inputs" class="rad-label"> <input type="radio" value="doesn't matter" name="gender"  >
+                            <span class="text">doesn't matter</span>
+                        </label>
+                        <br>
+                        <span id="gender-error" ">Please choose a gender</span>
+                        <span id="end-message" ">Thank you for submission</span>
+                        
+                        
+                        needs to go along with other dogs:
+                        <br>
+                        <label  class="rocker rocker-small" >
+                            <input name="friendly" type="checkbox" value="yes">
+                            <span class="switch-left" >Yes</span>
+                            <span class="switch-right">No</span>
+    
+                        </label>
+                        <br>
+                        <div class="submit">
+                       
+                            <button type="submit"><span class="button_top">Submit</span></button>
+                            <button type="reset"><span class="button_top">Reset</span></button>
+                        </div>
+                      
+                </form>
+              
+                </p>  
+            </div>   
+            <div class="available-pets">
             <h1>Available Pets</h1>
+        
             <ul class="pet-list">
+                 <!--
                 <li class="pet">
+
                     <img src="images/labrador.jpg" alt="labrador">
                     <h2>Labrador</h2>
                     <ul>
@@ -178,13 +263,13 @@
                     <button class="interested-button">Interested</button>
                 </li>
             </ul>
-
-
-
-
-
+            -->
         </div>
-
+       
+        
+                  
+            </div>
+        </div>
     </div>
     <footer>
         <a href="disclaimer.html">
@@ -194,5 +279,6 @@
     <script src="app.js"></script>
 
 </body>
+?>
 
 </html>
