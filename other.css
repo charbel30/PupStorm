@@ -359,3 +359,316 @@ input:checked:focus + .switch-left + .switch-right {
             animation-timing-function: ease-out;
   }
 }
+.card-container{
+position: relative;
+width: 15vw;
+height: 15vh;
+left: 200px;
+
+
+}
+/* login form */
+.outer-card {
+  width: 21.5vw ;
+  color: #ed7966;
+  height: 45vh;
+  left: 10px;
+  background-image: linear-gradient(163deg, #1f1b1b 0%, #ed7966 100%);
+  border-radius: 15px;
+  transition: all .3s;
+  box-shadow: 5px 10px 15px #8a8787,
+  -5px -5px 12px #919090;
+ }
+ 
+ .outer-card2 {
+  width: 21.5vw;
+  padding: 1.4vw;
+  height: 45vh;
+  background-color: #303179;
+  border-radius: 1px;
+  transition: all .2s;
+
+ }
+ 
+ .outer-card2:hover {
+  transform: scale(0.98);
+  border-radius: 15px;
+ }
+ 
+ .outer-card:hover {
+  box-shadow: 0px 0px 30px 1px rgba(231, 27, 27, 0.5);
+ }
+
+.signup {
+  color: #1e1e1f;
+  text-transform: uppercase;
+  letter-spacing: 0.1vw;
+  display: block;
+  font-weight: bold;
+  font-size: 1.6vw;
+  margin-top: 1.5em;
+ 
+}
+
+.card {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 35vh;
+  height: 100%;
+  width: 19vw;
+  left: 200px;
+  flex-direction: column;
+  gap: 35px;
+  border-radius: 15px;
+  background: #ed7966;
+  box-shadow: 16px 16px 32px #1b1e3f,
+        -16px -16px 32px #1b1e3f;
+  border-radius: 8px;
+}
+
+.inputBox,
+.inputBox1 {
+  position: relative;
+  width: 14.5vw;
+}
+
+.inputBox input,
+.inputBox1 input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  color: #19191d;
+  font-size: 1vw;
+  background: transparent;
+  border-left: 2px solid #19191d;
+  border-bottom: 2px solid #19191d;
+  transition: 0.1s;
+  border-bottom-left-radius: 8px;
+}
+
+.inputBox span {
+  margin-top: 5px;
+  position: absolute;
+  left: 0;
+  transform: translateY(-4px);
+  margin-left: 10px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 0.8vw;
+  color: #19191d;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 0.13vw;
+  border-radius: 8px;
+}
+
+.inputBox input:valid~span,
+.inputBox input:focus~span {
+  transform: translateX(7vw) translateY(-1.06vw);
+  font-size: 0.75vw;
+  padding: 5px 10px;
+  background: #19191d;
+  letter-spacing: 0.2em;
+  color: #fff;
+  border: 2px;
+}
+
+
+.inputBox input:valid,
+.inputBox input:focus,
+.inputBox1 input:valid,
+.inputBox1 input:focus {
+  border: 2px solid #000;
+  border-radius: 8px;
+}
+
+.enter {
+  height: 4.5vh;
+  width: 6vw;
+  border-radius: 5px;
+  border: 2px solid #19191d;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-size: 0.7vw;
+  letter-spacing: 2px;
+  margin-bottom: 3em;
+}
+
+.enter:hover {
+  background-color: #19191d;
+  color: white;
+}
+
+.popover {
+  font-size: 0.9vw;
+  position: relative;
+  top: -25px;
+  left: 10px;
+}
+
+.popover-content {
+  position: absolute;
+  top: -10px;
+  left: 100%;
+  padding: 10px;
+  width: 24vw;
+  background-color: #19191d;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+.popover-content:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #343683;
+}
+
+.popover_error {
+  position: relative;
+  top: -2.5vh;
+  left: 0.1vw;
+}
+
+.popover-content_error {
+  position: sticky;
+  top: 20px;
+  translate: -1.4vw 0;
+  padding: 10px;
+  width: 13vw;
+  height: 4vh;
+font-size:  0.9vw;
+  background-color: #19191d;
+  letter-spacing: 0.01vw;
+  color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  opacity: 1;
+  transition: opacity .3s ease-in-out;
+}
+
+.popover-content_error:before {
+  content: '';
+  position: absolute;
+  transform:  rotate(90deg);
+  translate: 3.2vw -2.2vh;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #ccccda;
+}
+
+/* create account css */
+.card_account {
+  border: .05rem solid black;
+  height: 30vh;
+  width: 12vw;
+  overflow: hidden;
+  position: relative;
+  border-radius: 5px;
+  left: 50vw;
+  top: 12vh;
+  transition: 0.3s all;
+  background-color: #ed7966;
+}
+.card_account:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+.card_account:hover .img1 {
+  transform: scale(1.5, 1.2) translate(5px, -30px) rotate(5deg);
+}
+
+.card_account:hover .img1::before {
+  transition: transform 1s 0.4s;
+  transform: translateX(400px) skewX(-10deg);
+  
+}
+
+.card_account:hover .img2 {
+  transform: translateY(120%);
+
+}
+
+.card_account .img {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, #282983, #191a50);
+  background-size: 100% 200%;
+  transition: 0.3s all;
+}
+
+.card_account .img1 {
+  top: 0;
+  right: 0;
+  position: relative;
+
+
+}
+
+.card_account .img1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -25px;
+  height: 100%;
+  width: 10px;
+  transform: skewX(-10deg);
+  background-image: linear-gradient(to right, rgb(32, 151, 248), rgba(255, 255, 255, 0.9));
+
+
+}
+
+.card_account .img2 {
+  padding: 1rem;
+  padding-bottom: 7.6vw;
+  font-size: 1.3vw;
+  color: #ed7966;
+  bottom: 0;
+  right: 0;
+  background-position: bottom center;
+
+
+}
+
+.card_account__content {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  transform: translateX(-130%);
+  transition: .5s ease-in-out transform .3s;
+  position: relative;
+  overflow-x: visible;
+  z-index: -1;
+
+
+}
+
+.card_account__content span {
+  display: block;
+
+}
+
+.card_account__content .name {
+  width: 10vw;
+  font-weight: bold;
+  font-size: 1.3vw;
+  color: #1f1b1b;
+  overflow: auto;
+
+}
+.card_account:hover .card_account__content {
+  transform: translateX(0);
+ 
+}
+
+

@@ -220,4 +220,40 @@ else if(document.querySelector(".giveaway")){
     }
     );
   }
-  
+  // Get the input element
+let username_input = document.querySelector('.username');
+let password_input = document.querySelector('.password');
+
+
+// Get the popover element
+let popover_username = document.querySelector('.username_pop');
+let popover_password = document.querySelector('.password_pop');
+
+
+// Add the event listener for the focus event
+username_input.addEventListener('focus', function() {
+ setTimeout(() => {
+    popover_username.style.opacity = '1';
+  }, 150);
+});
+
+// Add the event listener for the blur event
+username_input.addEventListener('blur', function() {
+    popover_username.style.opacity = '0';
+});
+
+password_input.addEventListener('focus', function() {
+  setTimeout(function() {
+      popover_password.style.opacity = '1';
+  }, 150);
+});
+
+// Add the event listener for the blur event to the password input
+password_input.addEventListener('blur', function() {
+  popover_password.style.opacity = '0';
+});
+
+var popover = document.querySelector('.popover_error');
+        if (popover) {
+            popover.style.display = 'block';
+        }

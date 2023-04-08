@@ -269,23 +269,7 @@ footer p {
   line-height: 50px;
   font-size: 20px;
 }
-.homes .app-sidebar {
-  align-self: flex-start;
-  position: sticky;
-  background-color: #facac2;
-  scroll-snap-stop: always;
-  border-radius: 0.8rem;
-  padding: 6vh 2rem 13vh;
-  top: 4vh;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  transition: all 0.35s ease;
-  width: 37%;
-  height: 91%;
-  margin: 1vw 1vw;
-  z-index: 999;
-  max-width: 40%;
-  max-height: fit-content;
-}
+
 .app-sidebar {
   align-self: flex-start;
   position: sticky;
@@ -296,11 +280,11 @@ footer p {
   top: 4vh;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   transition: all 0.35s ease;
-  width: 32%;
+  width: 50%;
   height: 91%;
   margin: 1vw 1vw;
   z-index: 999;
-  max-width: 33.5%;
+  max-width: 33.7%;
   max-height: fit-content;
 }
 .app-sidebar.showed {

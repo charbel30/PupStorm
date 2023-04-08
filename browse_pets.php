@@ -1,5 +1,4 @@
 
-<?php include("database.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,23 +41,6 @@
                         </li>
                     </a>
 
-
-
-                    <a href="find_pup.html">
-                        <button class="sidebut">
-
-                            <li refer="about-me">
-
-
-                                <p>
-                                    <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-                                    <span class="title">Find Pup and Puss</span>
-                                </p>
-                            </li>
-                        </button>
-                    </a>
-
-
                     <a href="care.html">
 
                         <button refer="projects" class="sidebut">
@@ -88,6 +70,20 @@
                             </li>
                         </button>
                     </a>
+                    <a href="createaccount.php">
+                        <button class="sidebut">
+
+                            <li refer="about-me">
+
+
+                                <p>
+                                    <span class="icon"><i class="fa-solid fa-right-to-bracket"></i></span>
+                                    <span class="title">Sign up</span>
+                                </p>
+                            </li>
+                        </button>
+                    </a>
+
                     <a href="contact-us.html">
                         <button class="sidebut">
 
@@ -123,8 +119,10 @@
                         <option value="cat">Cat</option>
                     </select>
                     <div>
-                <form action="database.php" method="post" class="choose-pet choose-form">
+                <form action="" method="post" class="choose-pet choose-form">
+                <label for="breed">Choose a breed:</label>
                         <select name="breed" id="breed">
+                       
                             <option value="labrador">Labrador</option>
                             <option value="poodle">Poodle</option>
                             <option value="bulldog">Bulldog</option>
@@ -193,7 +191,7 @@
             <h1>Available Pets</h1>
         
             <ul class="pet-list">
-                 <!--
+               
                 <li class="pet">
 
                     <img src="images/labrador.jpg" alt="labrador">
@@ -263,7 +261,7 @@
                     <button class="interested-button">Interested</button>
                 </li>
             </ul>
-            -->
+          
         </div>
        
         
@@ -279,6 +277,6 @@
     <script src="app.js"></script>
 
 </body>
-?>
+
 
 </html>
