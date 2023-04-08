@@ -123,7 +123,7 @@
                         <option value="cat">Cat</option>
                     </select>
                     <div>
-                        <label for="breed">Choose a breed:</label>
+                <form action="database.php" method="post" class="choose-pet choose-form">
                         <select name="breed" id="breed">
                             <option value="labrador">Labrador</option>
                             <option value="poodle">Poodle</option>
