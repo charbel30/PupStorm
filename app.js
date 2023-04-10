@@ -18,8 +18,8 @@ const date = new Date();
 let refreshPositionsTimeout = null;
 mainContainer = document.querySelector(".main-container");
 
-const form = document.querySelector(".choose-form");
-const end_message = document.querySelector(".end-message");
+const form = document.getElementById("form_submit_giveaway");
+const end_message = document.getElementById('end-message');
 const genderError = document.getElementById('gender-error');
 const emailError = document.getElementById('email-error');
 
@@ -113,7 +113,7 @@ const emailregex = (/^[^\s@]+@[^\s@]+\.[^\s@]+$/) ;
 if(document.querySelector(".find-pup")){
 
 form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  
     const formData = new FormData(form);
     const type = formData.get("pet");
     const breed = formData.get("breed");
@@ -128,8 +128,10 @@ form.addEventListener("submit", (e) => {
  
 
    if(gender === null){
+    e.preventDefault();
       genderError.style.display = 'block';
       document.querySelector("#end-message").style.display = 'none';
+      
   
     } 
     else{
@@ -159,9 +161,9 @@ form.addEventListener("submit", (e) => {
   }
   );
 }
-else if(document.querySelector(".giveaway")){
+if(form){
+  
   form.addEventListener("submit", (e) => {
-      e.preventDefault();
       const formData = new FormData(form);
       const type = formData.get("pet");
       const breed = formData.get("breed");
@@ -181,19 +183,17 @@ else if(document.querySelector(".giveaway")){
       if(childFriendly === null){
         childFriendly = "No";
       }
-      console.log(email);
 
         if(!emailregex.test(email)){
+         
         emailError.style.display = 'block';
         end_message.style.display = 'none';
-        return;
+        e.preventDefault();
+        
       }
       else{
         emailError.style.display = 'none';
-        form.style.display = 'none';
-        document.querySelector(".donates").style.display = "none";
-        end_message.style.display = 'flex';
-    
+        
       } 
       const pet = {
         type,
@@ -207,19 +207,20 @@ else if(document.querySelector(".giveaway")){
         comment
 
       };
-  
       console.log(pet);
     }
     );
 
-  
+   
     form.addEventListener("reset", (e) => {
       end_message.style.display = 'none';
       emailError.style.display = 'none';
       form.reset();
     }
     );
+   
   }
+
   // Get the input element
 let username_input = document.querySelector('.username');
 let password_input = document.querySelector('.password');
@@ -257,3 +258,47 @@ var popover = document.querySelector('.popover_error');
         if (popover) {
             popover.style.display = 'block';
         }
+
+
+        //client side validation of login form
+    // Get the login form and error message elements
+    const loginForm = document.getElementById('login-form');
+    const usernameError = document.getElementById('username-error').querySelector('.popover-content_error');
+    const passwordError = document.getElementById('password-error');
+
+    // Add an event listener to the login form
+    loginForm.addEventListener('submit', (event) => {
+        // Get the entered username and password
+        const username = document.querySelector('.username').value;
+        const password = document.querySelector('.password').value;
+
+        // Check if the entered username and password satisfy the format criteria
+        if (!/^[a-zA-Z0-9]+$/.test(username)) {
+          console.log("username is invalid");
+            // Display an error message and prevent form submission
+            usernameError.querySelector('.error').textContent = "Invalid username format.";
+            usernameError.style.display = "block";
+            event.preventDefault();
+        } else {
+            usernameError.style.display = "none";
+        }
+        if (password.length < 4 || !/[a-zA-Z]/.test(password) || !/[0-9]/.test(password)) {
+          console.log("password is invalid");
+            // Display an error message and prevent form submission
+            passwordError.querySelector('.error').textContent = "Invalid password format.";
+            passwordError.style.display = "block";
+            event.preventDefault();
+        } else {
+          console.log("password is valid");
+            passwordError.style.display = "none";
+        }
+    });
+
+    // logout button event listener to clear the local storage and redirect to the login page
+
+    function logout_confirm() {
+      var r = confirm("Do you really want to log out?");
+      if (r) {
+        window.location.href = 'logout.php'
+      }
+    } 

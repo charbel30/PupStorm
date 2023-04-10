@@ -68,6 +68,7 @@ if (isset($_POST['submit'])) {
 
             <a href="home.html"> <img src="logo.png" alt="logo"></a>
             <div class="date_time"></div>
+          
         </logo>
     </header>
     <div class="main">
@@ -104,7 +105,7 @@ if (isset($_POST['submit'])) {
 
 
 
-                    <a href="giveaway.html">
+                    <a href="giveaway.php">
 
                         <button class="sidebut">
 
@@ -212,7 +213,19 @@ if (isset($_POST['submit'])) {
 
                 </div>
             </div>
-        <?php } ?>
+        <?php }
+        if(isset($accountcreated_error)){
+            ?>
+            <div class="card_account">
+           
+                <div class="img img1">    </div>
+                <div class="img img2"> <p>  <?php echo $accountcreated_error; ?></p></div>
+                <div class="card_account__content">
+                    <span class="name"> <?php echo " please retry" ?></span>
+
+                </div>
+            </div>
+        <?php }   ?>
     </div>
     <footer>
         <a href="disclaimer.html">

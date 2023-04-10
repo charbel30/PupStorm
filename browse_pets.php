@@ -1,6 +1,88 @@
+<?php
+//  i want to create a file called availablepetinformation.txt that holds all the information of the pets that are available for adoption then i want to read that file and display it on the website depending on the type of pet that is selected through the form that the user fills out on the website
+//this is the data that i want to store in the txt file just like this
+$ch = curl_init();
+echo  " <style>.available-pets { display: none; }</style>";
+$match = false;
+$api_key = "live_QkhJre6qISGkRRXUZjXnc4XQhgFSgaHDNmbVXzUP0nJcL9BIbjzQEx8WmJbfDfh9";
+$my_breeds = [ 
+'labrador' =>149 , 
+ 'poodle' => 194 ,
+ 'bulldog'=>  179 ,
+ 'beagle' => 31 ,
+ 'german Shepherd' => 115,
+ 'goldenRetriever' => 121,
+ 'french Bulldog ' => 113,
+ 'husky ' => 8,
+ 'boxer ' => 55,
+ 'pug ' => 201,
+ 'rottweiler' =>210,
+ 'chihuahua' => 79,
+ 'doberman' => 94,
+ 'any cat' => 140,]; 
 
+if (isset($_POST['submit'])) {
+ 
+
+    $html = '';
+    $type = $_POST['pet'];
+    $breed = $_POST['breed'];
+    $age = $_POST['age'];
+    $gender = $_POST['gender'];
+    $pet = [];
+    $friendly = isset($_POST['friendly']) ? $_POST['friendly'] : "No";
+   echo $my_breeds[$breed];
+
+    $file_contents =  file_get_contents("availablepetinformation.txt");
+    $lines = explode("\n", $file_contents);
+    foreach ($lines as $line) {
+        if (empty($line)) {
+            continue;
+        }
+        $line = explode(":", $line);
+        $pet = [
+            'pet' => $line[2],
+            'breed' => $line[3],
+            'age' => $line[4],
+            'gender' => $line[5],
+            'friendly' => $line[6],
+        ];
+        curl_setopt($ch, CURLOPT_URL, "https://api.thedogapi.com/v1/images/search?breed_ids=$my_breeds[$breed]&include_breeds=true");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "x-api-key: $api_key"
+        ));
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        $data = json_decode($response, true);
+        $image_url = $data[0]['url'];
+
+
+        if ($line[2] == $type && $line[3] == $breed && $line[4] == $age && $line[5] == $gender && $line[6] == $friendly) {
+                 echo  "<style>.find-pup { display: none; }</style>";
+            echo  " <style>.available-pets { display: block; }</style>";
+       
+            $match = true;
+            $html .=  " <li class='pet'>";
+            $html .=  "<img src='$image_url' alt='$breed'>";
+            $html .=  "<h2>{$pet['pet']}</h2>";
+            $html .=  "<ul>";
+            $html .=  "<li class='desc'><strong>Breed: {$pet['breed']}</strong></li>";
+            $html .=  "<li class='desc'><strong>Age: {$pet['age']} years</strong></li>";
+            $html .=  "<li class='desc'><strong>Gender: {$pet['gender']}</strong></li>";
+            $html .=  " <li class='desc'> <strong> Can go along with other cats and dogs {$pet['friendly']}</strong></li>";
+            $html .=  "</ul>";
+            $html .=  "<button class='interested-button'>Interested</button>";
+            $html .=  "</li>";
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -57,7 +139,7 @@
 
 
 
-                    <a href="giveaway.html">
+                    <a href="giveaway.php">
 
                         <button class="sidebut">
 
@@ -98,8 +180,7 @@
                     </a>
                 </ul>
                 <button id="toggle-sidebar">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px"
-                        fill="#000000">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#000000">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z" />
                     </svg>
@@ -107,22 +188,21 @@
             </div>
         </div>
         <div class="main-container browse_pets">
-            
-        <div class="find-pup">
+
+            <div class="find-pup">
                 <h1 class="browse choose">choose the pet you want</h1>
 
                 <p>
-                <form action="database.php" method="post" class="choose-pet choose-form">
+                <form method="post" class="choose-pet choose-form">
                     <label for="pet">Choose a pet:</label>
                     <select name="pet" id="pet">
                         <option value="dog">Dog</option>
                         <option value="cat">Cat</option>
                     </select>
                     <div>
-                <form action="" method="post" class="choose-pet choose-form">
-                <label for="breed">Choose a breed:</label>
+                        <label for="breed">Choose a breed:</label>
                         <select name="breed" id="breed">
-                       
+
                             <option value="labrador">Labrador</option>
                             <option value="poodle">Poodle</option>
                             <option value="bulldog">Bulldog</option>
@@ -137,9 +217,9 @@
                             <option value="chihuahua">Chihuahua</option>
                             <option value="doberman">Doberman</option>
                             <option value="cat">any cat</option>
-    
-    
-    
+
+
+
                             <option value="doesn't matter">doesn't matter</option>
                         </select>
                     </div>
@@ -154,120 +234,125 @@
                     <br>
                     <label for="gender">prefered gender:</label>
                     <br>
-                    <label for="inputs" class="rad-label"> <input class="radio" type="radio" value="female" name="gender" >
+                    <label for="inputs" class="rad-label"> <input class="radio" type="radio" value="female" name="gender" required>
                         <span class="text">female</span>
                     </label>
-    
-                    <label for="inputs" class="rad-label"> <input type="radio" value="male" name="gender"  >
+
+                    <label for="inputs" class="rad-label"> <input type="radio" value="male" name="gender" required>
                         <span class="text">male</span>
-                        <label for="inputs" class="rad-label"> <input type="radio" value="doesn't matter" name="gender"  >
+                        <label for="inputs" class="rad-label"> <input type="radio" value="doesn't matter" name="gender" required>
                             <span class="text">doesn't matter</span>
                         </label>
                         <br>
                         <span id="gender-error" ">Please choose a gender</span>
-                        <span id="end-message" ">Thank you for submission</span>
-                        
-                        
+                        <span id=" end-message" ">Thank you for submission</span>
                         needs to go along with other dogs:
                         <br>
-                        <label  class="rocker rocker-small" >
+                        <label  class=" rocker rocker-small">
                             <input name="friendly" type="checkbox" value="yes">
-                            <span class="switch-left" >Yes</span>
+                            <span class="switch-left">Yes</span>
                             <span class="switch-right">No</span>
-    
-                        </label>
-                        <br>
-                        <div class="submit">
-                       
-                            <button type="submit"><span class="button_top">Submit</span></button>
-                            <button type="reset"><span class="button_top">Reset</span></button>
-                        </div>
-                      
-                </form>
-              
-                </p>  
-            </div>   
-            <div class="available-pets">
-            <h1>Available Pets</h1>
-        
-            <ul class="pet-list">
-               
-                <li class="pet">
 
-                    <img src="images/labrador.jpg" alt="labrador">
-                    <h2>Labrador</h2>
-                    <ul>
-                        <li class="desc"><strong>Age: 3 years</strong></li>
-                        <li class="desc"><strong>Gender: Female</strong></li>
-                        <li class="desc"><strong>Suitable for small children</strong></li>
-                        <li class="desc"> <strong> Can go along with other cats and dogs</strong></li>
-                        <li class="desc"><strong>Description:</strong> A Labrador is a friendly and intelligent breed known for its
-                            loyalty and trainability</li>
-                    </ul>
-                    <button class="interested-button">Interested</button>
-                </li>
-                <li class="pet">
-                    <img src="images/poodle.png" alt="poodle">
-                    <h2>Poodle</h2>
-                    <ul>
-                        <li class="desc"><strong>Age: 2 years</strong> </li>
-                        <li class="desc"><strong>Gender: Male</strong> </li>
-                        <li class="desc"><strong>Great with kids</strong></li>
-                        <li class="desc"> <strong>Gets along well with other dogs</strong></li>
-                        <li class="desc"><strong>Description:</strong> A Poodle is a highly intelligent and energetic breed known for
-                            their hypoallergenic coat and athleticism.</li>
-                    </ul>
-                    <button class="interested-button">Interested</button>
-                </li>
-                <li class="pet">
-                    <img src="images/bulldog.jpg" alt="bulldog">
-                    <h2>Bulldog</h2>
-                    <ul>
-                        <li class="desc"><strong>Age: 5 years</strong> </li>
-                        <li class="desc"><strong>Gender: Male</strong> </li>
-                        <li class="desc"><strong>Not recommended for small children</strong></li>
-                        <li class="desc"> <strong>May not get along well with other dogs or cats</strong></li>
-                        <li class="desc"><strong>Description:</strong> A Bulldog is a courageous and friendly breed known for its
-                            wrinkly
-                            face and affectionate personality.</li>
-                    </ul>
-                    <button class="interested-button">Interested</button>
-                </li>
-                <li class="pet">
-                    <img src="images/golden.jpg" alt="Golden Retriever">
-                    <h2>Golden Retriever</h2>
-                    <ul>
-                        <li class="desc"><strong>Age: 4 years</strong> </li>
-                        <li class="desc"><strong>Gender: Female</strong></li>
-                        <li class="desc"><strong>Good with kids</strong></li>
-                        <li class="desc"> <strong>Gets along well with other dogs and cats</strong></li>
-                        <li class="desc"><strong>Description:</strong> A Golden Retriever is a friendly and intelligent breed known
-                            for
-                            its beautiful golden coat and playful personality.</li>
-                    </ul>
-                    <button class="interested-button">Interested</button>
-                </li>
-                <li class="pet">
-                    <img src="images/pug.jpg" alt="pug">
-                    <h2>Pug</h2>
-                    <ul>
-                        <li class="desc"><strong>Age: 2 years</strong> </li>
-                        <li class="desc"><strong>Gender: Male</strong> </li>
-                        <li class="desc"><strong>Not suitable for small children</strong></li>
-                        <li class="desc"> <strong> Good with other dogs but not cats</strong></li>
-                        <li class="desc"><strong>Description:</strong> A Pug is a playful and affectionate breed known for its
-                            wrinkled face and curly tail</li>
-                    </ul>
-                    <button class="interested-button">Interested</button>
-                </li>
-            </ul>
-          
-        </div>
-       
-        
-                  
+                    </label>
+                    <br>
+                    <div class="submit">
+
+                        <button type="submit" name="submit" value="submit criteria"><span class="button_top">Submit</span></button>
+                        <button type="reset"><span class="button_top">Reset</span></button>
+                    </div>
+
+                </form>
+
+                </p>
             </div>
+            <div class="available-pets">
+                <h1>Available Pets</h1>
+
+                <ul class="pet-list">
+
+                    <li class="pet">
+
+                        <img src="images/labrador.jpg" alt="labrador">
+                        <h2>Labrador</h2>
+                        <ul>
+                            <li class="desc"><strong>Age: 3 years</strong></li>
+                            <li class="desc"><strong>Gender: Female</strong></li>
+                            <li class="desc"><strong>Suitable for small children</strong></li>
+                            <li class="desc"> <strong> Can go along with other cats and dogs</strong></li>
+                            <li class="desc"><strong>Description:</strong> A Labrador is a friendly and intelligent breed known for its
+                                loyalty and trainability</li>
+                        </ul>
+                        <button class="interested-button">Interested</button>
+                    </li>
+                    <li class="pet">
+                        <img src="images/poodle.png" alt="poodle">
+                        <h2>Poodle</h2>
+                        <ul>
+                            <li class="desc"><strong>Age: 2 years</strong> </li>
+                            <li class="desc"><strong>Gender: Male</strong> </li>
+                            <li class="desc"><strong>Great with kids</strong></li>
+                            <li class="desc"> <strong>Gets along well with other dogs</strong></li>
+                            <li class="desc"><strong>Description:</strong> A Poodle is a highly intelligent and energetic breed known for
+                                their hypoallergenic coat and athleticism.</li>
+                        </ul>
+                        <button class="interested-button">Interested</button>
+                    </li>
+                    <li class="pet">
+                        <img src="images/bulldog.jpg" alt="bulldog">
+                        <h2>Bulldog</h2>
+                        <ul>
+                            <li class="desc"><strong>Age: 5 years</strong> </li>
+                            <li class="desc"><strong>Gender: Male</strong> </li>
+                            <li class="desc"><strong>Not recommended for small children</strong></li>
+                            <li class="desc"> <strong>May not get along well with other dogs or cats</strong></li>
+                            <li class="desc"><strong>Description:</strong> A Bulldog is a courageous and friendly breed known for its
+                                wrinkly
+                                face and affectionate personality.</li>
+                        </ul>
+                        <button class="interested-button">Interested</button>
+                    </li>
+                    <li class="pet">
+                        <img src="images/golden.jpg" alt="Golden Retriever">
+                        <h2>Golden Retriever</h2>
+                        <ul>
+                            <li class="desc"><strong>Age: 4 years</strong> </li>
+                            <li class="desc"><strong>Gender: Female</strong></li>
+                            <li class="desc"><strong>Good with kids</strong></li>
+                            <li class="desc"> <strong>Gets along well with other dogs and cats</strong></li>
+                            <li class="desc"><strong>Description:</strong> A Golden Retriever is a friendly and intelligent breed known
+                                for
+                                its beautiful golden coat and playful personality.</li>
+                        </ul>
+                        <button class="interested-button">Interested</button>
+                    </li>
+                    <li class="pet">
+                        <img src="images/pug.jpg" alt="pug">
+                        <h2>Pug</h2>
+                        <ul>
+                            <li class="desc"><strong>Age: 2 years</strong> </li>
+                            <li class="desc"><strong>Gender: Male</strong> </li>
+                            <li class="desc"><strong>Not suitable for small children</strong></li>
+                            <li class="desc"> <strong> Good with other dogs but not cats</strong></li>
+                            <li class="desc"><strong>Description:</strong> A Pug is a playful and affectionate breed known for its
+                                wrinkled face and curly tail</li>
+                        </ul>
+                        <button class="interested-button">Interested</button>
+                    </li>
+                    <?php if ($match) {
+                        echo $html;
+                        
+                    }
+
+                    ?>
+                </ul>
+
+
+            </div>
+
+
+
         </div>
+    </div>
     </div>
     <footer>
         <a href="disclaimer.html">

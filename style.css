@@ -302,7 +302,7 @@ footer p {
   padding: 0;
   transition: all 0.3s ease;
 }
-
+  
 .app-sidebar ul button {
   padding: 1vw;
   background-color: transparent;
@@ -445,12 +445,8 @@ footer p {
   transition: all 0.35s ease;
  
 }
-.find-pup{
-  display: block;
-}
-.available-pets{
-display: none;
-}
+
+
 
 .pet-list img {
   width: 20%;
