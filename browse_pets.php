@@ -1,6 +1,4 @@
 <?php
-//  i want to create a file called availablepetinformation.txt that holds all the information of the pets that are available for adoption then i want to read that file and display it on the website depending on the type of pet that is selected through the form that the user fills out on the website
-//this is the data that i want to store in the txt file just like this
 $ch = curl_init();
 echo  " <style>.available-pets { display: none; }</style>";
 $match = false;
@@ -10,12 +8,12 @@ $my_breeds = [
  'poodle' => 194 ,
  'bulldog'=>  179 ,
  'beagle' => 31 ,
- 'german Shepherd' => 115,
- 'goldenRetriever' => 121,
- 'french Bulldog ' => 113,
- 'husky ' => 8,
- 'boxer ' => 55,
- 'pug ' => 201,
+ 'german shepherd' => 115,
+ 'golden retriever' => 121,
+ 'french bulldog' => 113,
+ 'husky' => 8,
+ 'boxer' => 55,
+ 'pug' => 201,
  'rottweiler' =>210,
  'chihuahua' => 79,
  'doberman' => 94,
@@ -31,7 +29,6 @@ if (isset($_POST['submit'])) {
     $gender = $_POST['gender'];
     $pet = [];
     $friendly = isset($_POST['friendly']) ? $_POST['friendly'] : "No";
-   echo $my_breeds[$breed];
 
     $file_contents =  file_get_contents("availablepetinformation.txt");
     $lines = explode("\n", $file_contents);
@@ -60,16 +57,15 @@ if (isset($_POST['submit'])) {
         $image_url = $data[0]['url'];
 
 
-        if ($line[2] == $type && $line[3] == $breed && $line[4] == $age && $line[5] == $gender && $line[6] == $friendly) {
+        if ($line[2] == $type || $line[3] == $breed && $line[4] == $age && $line[5] == $gender && $line[6] == $friendly) {
                  echo  "<style>.find-pup { display: none; }</style>";
             echo  " <style>.available-pets { display: block; }</style>";
        
             $match = true;
             $html .=  " <li class='pet'>";
             $html .=  "<img src='$image_url' alt='$breed'>";
-            $html .=  "<h2>{$pet['pet']}</h2>";
+            $html .=  "<h2>{$pet['breed']}</h2>";
             $html .=  "<ul>";
-            $html .=  "<li class='desc'><strong>Breed: {$pet['breed']}</strong></li>";
             $html .=  "<li class='desc'><strong>Age: {$pet['age']} years</strong></li>";
             $html .=  "<li class='desc'><strong>Gender: {$pet['gender']}</strong></li>";
             $html .=  " <li class='desc'> <strong> Can go along with other cats and dogs {$pet['friendly']}</strong></li>";
@@ -207,9 +203,9 @@ if (isset($_POST['submit'])) {
                             <option value="poodle">Poodle</option>
                             <option value="bulldog">Bulldog</option>
                             <option value="beagle">Beagle</option>
-                            <option value="german-shepherd">German Shepherd</option>
-                            <option value="golden-retriever">Golden Retriever</option>
-                            <option value="french-bulldog">French Bulldog</option>
+                            <option value="german shepherd">German Shepherd</option>
+                            <option value="golden retriever">Golden Retriever</option>
+                            <option value="french bulldog">French Bulldog</option>
                             <option value="husky">Husky</option>
                             <option value="boxer">Boxer</option>
                             <option value="pug">Pug</option>
@@ -269,7 +265,12 @@ if (isset($_POST['submit'])) {
                 <h1>Available Pets</h1>
 
                 <ul class="pet-list">
+                <?php if ($match) {
+                        echo $html;
+                        
+                    }
 
+                    ?>
                     <li class="pet">
 
                         <img src="images/labrador.jpg" alt="labrador">
@@ -338,12 +339,6 @@ if (isset($_POST['submit'])) {
                         </ul>
                         <button class="interested-button">Interested</button>
                     </li>
-                    <?php if ($match) {
-                        echo $html;
-                        
-                    }
-
-                    ?>
                 </ul>
 
 

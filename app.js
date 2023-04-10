@@ -263,7 +263,8 @@ var popover = document.querySelector('.popover_error');
         //client side validation of login form
     // Get the login form and error message elements
     const loginForm = document.getElementById('login-form');
-    const usernameError = document.getElementById('username-error').querySelector('.popover-content_error');
+    if(loginForm){
+    const usernameError = document.querySelector('#username-error').querySelector('.popover-content_error');
     const passwordError = document.getElementById('password-error');
 
     // Add an event listener to the login form
@@ -293,6 +294,7 @@ var popover = document.querySelector('.popover_error');
             passwordError.style.display = "none";
         }
     });
+  }
 
     // logout button event listener to clear the local storage and redirect to the login page
 

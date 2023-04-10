@@ -22,7 +22,6 @@ if (isset($_POST['submit'])) {
             exit;
         } else {
             // Send back a message saying that the login failed
-            echo "login failed";
             $login_error = "no account found";
         }
     }
