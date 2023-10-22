@@ -114,7 +114,7 @@ $_SESSION['last_activity'] = time();
             <?php if (isset($_SESSION['username'])) { ?>
                 <button class="btn log-out" onclick="logout_confirm();" value="logout">Log Out</button>
             <?php } ?>
-            <a href="home.html"> <img src="logo.png" alt="logo"></a>
+            <a href="index.html"> <img src="logo.png" alt="logo"></a>
             <div class="date_time"></div>
 
         </logo>
