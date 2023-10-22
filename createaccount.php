@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
     <header>
         <logo>
 
-            <a href="home.html"> <img src="logo.png" alt="logo"></a>
+            <a href="index.html"> <img src="logo.png" alt="logo"></a>
             <div class="date_time"></div>
           
         </logo>
