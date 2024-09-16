@@ -1,5 +1,5 @@
 {
-    "name": "pupstorm",
+    "name": "pupstorm/pet-adoption-website",
     "description": "pet adoption website",
     "require": {
         "php": "^7.4 || ^8.0"
